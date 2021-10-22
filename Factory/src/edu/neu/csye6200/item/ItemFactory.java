@@ -9,11 +9,11 @@ public class ItemFactory {
 	public Factory getFactory(String type) {
 		switch(type) {
 		case "SERVICE":
-			return new ServiceItemFactory();
+			return ServiceItemFactory.getServiceItemFactory();
 		case "FOOD":
 			return new FoodItemFactory();
 		case "ELECTRONIC":
-			return new ElectronicItemFactory();
+			return ElectronicItemFactory.getElectronicItemFactory();
 		}
 		return null;
 	}

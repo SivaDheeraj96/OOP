@@ -28,7 +28,9 @@ public class Item {
 	public String toString() {
 		return "This is of type Item super class";
 	}
-	
+	public static void temp() {
+		
+	}
 	public int sortByName(Item t) {
 		return this.name.compareTo(t.name);
 	}

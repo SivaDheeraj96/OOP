@@ -33,5 +33,4 @@ public class FoodItem extends Item{
 		return "This is FoodItem "+this.name+" ID: "+this.id+" price:"+ this.price;
 	}
 	
-	
 }
