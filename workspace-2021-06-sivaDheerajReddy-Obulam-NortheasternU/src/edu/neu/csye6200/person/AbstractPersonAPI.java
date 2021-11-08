@@ -8,7 +8,7 @@ package edu.neu.csye6200.person;
  * 3. Implement an Employee class derived from the Person class.
  *
  */
-public abstract class AbstractPersonAPI {
+public abstract class AbstractPersonAPI implements Comparable<AbstractPersonAPI>{
 	/**
 	 * API
 	 */
@@ -22,9 +22,10 @@ public abstract class AbstractPersonAPI {
 	public abstract void setAge(int age);
 	public abstract void show();
 	
+	//added to support the sort;
 	public abstract int sortById(AbstractPersonAPI p);
+	public abstract int sortByAge(AbstractPersonAPI p);
 	public abstract int sortByFirstName(AbstractPersonAPI p);
 	public abstract int sortByLastName(AbstractPersonAPI p);
-	public abstract int sortByAge(AbstractPersonAPI p);
 }
 

@@ -1,13 +1,14 @@
 package edu.neu.csye6200.person;
 
-public class Person extends AbstractPersonAPI{
+public class Person extends AbstractPersonAPI {
 
 	private int id;
 	private String firstName;
 	private String lastName;
 	private int age;
 	
-	public Person (int id, String firstName, String lastName, int age){
+	
+	Person (int id, String firstName, String lastName, int age){
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -16,12 +17,14 @@ public class Person extends AbstractPersonAPI{
 	}
 	@Override
 	public int getId() {
+		// TODO Auto-generated method stub
 		return this.id;
 	}
 
 	@Override
 	public void setId(int id) {
-		this.id = id;
+		this.id =id;
+		
 	}
 
 	@Override
@@ -32,6 +35,7 @@ public class Person extends AbstractPersonAPI{
 	@Override
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+		
 	}
 
 	@Override
@@ -56,31 +60,32 @@ public class Person extends AbstractPersonAPI{
 
 	@Override
 	public void show() {
-		
-		
+		System.out.println(this.toString());
 	}
-	
+	@Override
 	public String toString() {
 		return "id: "+this.id+" firstName: "+this.firstName+" lastName: "+this.lastName+" age: "+this.age;
 	}
+
 	@Override
-	public int sortByFirstName(AbstractPersonAPI p) {
-		return this.firstName.compareTo(p.getFirstName());
-	}
-	@Override
-	public int sortByLastName(AbstractPersonAPI p) {
-		return this.lastName.compareTo(p.getLastName());
+	public int sortById(AbstractPersonAPI p) {
+		return ((Integer)this.id).compareTo(p.getId());
 	}
 	@Override
 	public int sortByAge(AbstractPersonAPI p) {
 		return ((Integer)this.age).compareTo(p.getAge());
 	}
 	@Override
-	public int sortById(AbstractPersonAPI p) {
-		return ((Integer)this.id).compareTo(p.getId());
+	public int sortByFirstName(AbstractPersonAPI p) {
+		return (this.firstName).compareTo(p.getFirstName());
+	}
+	@Override
+	public int sortByLastName(AbstractPersonAPI p) {
+		return (this.lastName).compareTo(p.getLastName());
 	}
 	
-	
-	
-
+	@Override
+	public int compareTo(AbstractPersonAPI o) {
+		return ((Integer)this.id).compareTo(((AbstractPersonAPI)o).getId());
+	}
 }

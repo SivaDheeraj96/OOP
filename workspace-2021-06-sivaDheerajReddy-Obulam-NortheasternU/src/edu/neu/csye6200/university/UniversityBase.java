@@ -1,26 +1,37 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.university;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import edu.neu.csye6200.person.AbstractPersonAPI;
+import edu.neu.csye6200.person.Employee;
+import edu.neu.csye6200.person.Student;
 
 public class UniversityBase extends AbstractSchoolAPI{
 
-	private List<AbstractPersonAPI> employeeList ;
 	private List<AbstractPersonAPI> studentList ;
-	public UniversityBase() {
-		employeeList = new ArrayList<AbstractPersonAPI>();
+	private List<AbstractPersonAPI> employeeList ;
+	
+	UniversityBase(){
 		studentList = new ArrayList<AbstractPersonAPI>();
+		employeeList = new ArrayList<AbstractPersonAPI>();
 	}
 	@Override
 	public void addEmployee(AbstractPersonAPI employee) {
-		this.employeeList.add(employee);		
+//		if(!(employee instanceof Employee)) {
+//			throw new RuntimeException("Not an employee object");
+//		}
+		this.employeeList.add(employee);
+		
 	}
 
 	@Override
 	public void addStudent(AbstractPersonAPI student) {
+//		if(!(student instanceof Student)) {
+//			throw new RuntimeException("Not an employee object");
+//		}
 		this.studentList.add(student);
 		
 	}
@@ -28,36 +39,34 @@ public class UniversityBase extends AbstractSchoolAPI{
 	@Override
 	public String getEmployeesInfo() {
 		StringBuilder sb = new StringBuilder();
-		for(AbstractPersonAPI student : studentList) {
-			sb.append(student).append("\n");
-		}
+		this.employeeList.stream().forEach(x -> {sb.append(x);sb.append("\n");});
 		return sb.toString();
 	}
 
 	@Override
 	public void showEmployees() {
-		System.out.print(this.getEmployeesInfo());
+		System.out.println(this.getEmployeesInfo());
 		
 	}
 
 	@Override
 	public String getStudentsInfo() {
 		StringBuilder sb = new StringBuilder();
-		for(AbstractPersonAPI student : employeeList) {
-			sb.append(student).append("\n");
-		}
+		this.studentList.stream().forEach(x -> {sb.append(x);sb.append("\n");});
 		return sb.toString();
 	}
 
 	@Override
 	public void showStudents() {
-		System.out.print(this.getStudentsInfo());
+		System.out.println(this.getStudentsInfo());
 		
 	}
 
 	@Override
 	public void show() {
+		System.out.println("Belown is the Employee list");
 		this.showEmployees();
+		System.out.println("Belown is the Student list");
 		this.showStudents();
 		
 	}
@@ -65,12 +74,19 @@ public class UniversityBase extends AbstractSchoolAPI{
 	@Override
 	public void sortEmployees(Comparator<AbstractPersonAPI> c) {
 		this.employeeList.sort(c);
-		
 	}
 
 	@Override
 	public void sortStudents(Comparator<AbstractPersonAPI> c) {
 		this.studentList.sort(c);
+	}
+	
+	public void sortEmployees() {
+		Collections.sort(employeeList);
+	}
+
+	public void sortStudents() {
+		Collections.sort(studentList);
 	}
 
 }

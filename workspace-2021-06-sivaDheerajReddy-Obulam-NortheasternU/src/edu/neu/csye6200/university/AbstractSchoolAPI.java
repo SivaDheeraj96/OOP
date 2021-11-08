@@ -1,4 +1,4 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.university;
 
 import java.util.Comparator;
 
